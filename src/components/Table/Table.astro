@@ -2,6 +2,7 @@
 interface DataItem {
   name: string;
   price: string;
+  groupTitle?: string;
 }
 
 const {
@@ -10,9 +11,32 @@ const {
 ---
 {
   data.length ? (
-    <table class="table-fixed">
-      <tbody>
-        {data.map((item: DataItem) => (<tr><td>{item.name}</td><td>{item.price}</td></tr>))}
+    <table class="table-fixed w-full">
+      <tbody class="divide-y divide-gray-200 border-t border-gray-200">
+        {data.map((item: DataItem) => (
+          <tr class="odd:bg-white even:bg-gray-50">
+            <td class="px-3 py-2">
+              <a
+                href="#common-modal"
+                class="popup-link block py-2"
+                data-title={`Заявка на услугу: ${item.name} — от ${item.price} ₽`}
+                data-form_name={`${item.groupTitle ? item.groupTitle + ' — ' : ''}${item.name} — от ${item.price} ₽`}
+              >
+                {item.name}
+              </a>
+            </td>
+            <td class="px-3 py-2">
+              <a
+                href="#common-modal"
+                class="popup-link block py-2 text-right"
+                data-title={`Заявка на услугу: ${item.name} — от ${item.price} ₽`}
+                data-form_name={`${item.groupTitle ? item.groupTitle + ' — ' : ''}${item.name} — от ${item.price} ₽`}
+              >
+                от {item.price} ₽
+              </a>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   ) : ('')

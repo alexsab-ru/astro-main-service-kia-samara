@@ -5,13 +5,15 @@ import SiteAlphaCenter from '@/components/PageTypes/SiteAlphaCenter.astro';
 import Landing from '@/components/PageTypes/Landing.astro';
 import LandingGAC from '@/components/PageTypes/LandingGAC.astro';
 import LandingHAVAL from '@/components/PageTypes/LandingHAVAL.astro';
+import ServiceKIA from '@/components/PageTypes/ServiceKIA.astro';
 
 const SiteType = {
 	LANDING: 'landing',
 	LANDING_GAC: 'landing-gac',
 	LANDING_HAVAL: 'landing-haval',
 	SITE: 'site',
-	SITE_ALPHA_CENTER: 'site-alpha-center'
+	SITE_ALPHA_CENTER: 'site-alpha-center',
+	SERVICE_KIA: 'service-kia'
 };
 const { siteType } = settings;
 let Content: typeof Site | typeof Landing;
@@ -31,6 +33,9 @@ switch(siteType) {
 		break;
 	case SiteType.SITE_ALPHA_CENTER:
 		Content = SiteAlphaCenter;
+		break;
+	case SiteType.SERVICE_KIA:
+		Content = ServiceKIA;
 		break;
 	default:
 		Content = Site;

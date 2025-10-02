@@ -12,6 +12,7 @@ BGRED='\033[30;41m'
 # Load DOMAIN from .env if not set
 if [ -z "$DOMAIN" ] && [ -f .env ]; then
   export DOMAIN=$(grep '^DOMAIN=' .env | awk -F'=' '{print substr($0, index($0,$2))}' | sed 's/^"//; s/"$//')
+fi
 
 if [ -z "$DOMAIN" ]; then
   echo "Error: DOMAIN is not found"

@@ -77,6 +77,7 @@
     "test_USED_CARS_ADS_AD": "pnpm cars test used_cars_ads_ad --dev",
     "test_USED_CARS_carcopy_offers_offer": "pnpm cars test used_cars_carcopy_offers_offer --dev",
     "\n# Dev and Build commands:": "",
+    "get_tables": "bash ./.github/scripts/sh/getTables.sh",
     "dev": "astro dev --open --host --config astro.local.config.mjs",
     "dd": "export IGNORE_ERRORS=1 && pnpm downloadJSON && pnpm getDealerPrices && pnpm mergeCarPrices && pnpm replacePlaceholdersAndSearchDates && pnpm dev",
     "ddw": "powershell -Command \"pnpm downloadJSON_win; pnpm getDealerPrices; pnpm mergeCarPrices; pnpm replacePlaceholdersAndSearchDates; pnpm dev\"",

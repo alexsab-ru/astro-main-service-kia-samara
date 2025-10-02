@@ -42,6 +42,7 @@ import Table from '@/components/Table/Table.astro';
 import fs from 'node:fs';
 
 // Парсим CSV и готовим данные для заголовков аккордеона + таблиц
+// Саму папку с таблицами можно скачать командой pnpm run get_tables
 const csvPath = new URL('../../data/tables/services.csv', import.meta.url);
 let faqBlocks: { item: TFaqItem; rows: { name: string; price: string; }[] }[] = [];
 

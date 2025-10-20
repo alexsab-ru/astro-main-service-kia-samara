@@ -42,14 +42,25 @@ import Table from '@/components/Table/Table.astro';
 import fs from 'node:fs';
 
 // Парсим CSV и готовим данные для заголовков аккордеона + таблиц
-// Саму папку с таблицами можно скачать командой pnpm run get_tables
+// Саму папку с таблицами можно скачать командой pnpm run get_table_services_csv
 const csvPath = new URL('../../data/tables/services.csv', import.meta.url);
 let faqBlocks: { item: TFaqItem; rows: { name: string; price: string; }[] }[] = [];
 
 try {
 	const csv = fs.readFileSync(csvPath, 'utf-8');
 	const lines = csv.trim().split('\n');
-	const rows = lines.map((line) => line.split(','));
+	// Новый формат CSV: все значения в двойных кавычках.
+	// Снимаем ТОЛЬКО внешние кавычки у каждой ячейки и подрезаем пробелы.
+	// Внутренние символы не трогаем, запятые внутри значений не используются.
+	const cleanCell = (value: string) => {
+		// Берём безопасно строку
+		const v = (value ?? '').trim();
+		// Удаляем внешние кавычки, если они есть ("..." -> ...)
+		const unquoted = v.replace(/^"(.*)"$/, '$1');
+		return unquoted.trim();
+	};
+	// Разбиваем по запятым и чистим каждую ячейку
+	const rows = lines.map((line) => line.split(',').map(cleanCell));
 	if (rows.length > 0) {
 		const header = rows[0];
 		// Заголовки идут парами: [Название, "цена от"], [Название2, "цена от"], ...

@@ -77,7 +77,7 @@
     "test_USED_CARS_ADS_AD": "pnpm cars test used_cars_ads_ad --dev",
     "test_USED_CARS_carcopy_offers_offer": "pnpm cars test used_cars_carcopy_offers_offer --dev",
     "\n# Dev and Build commands:": "",
-    "get_table_services_csv": "mkdir -p src/data/tables && export CSV_URL=\"https:\/\/docs.google.com\/spreadsheets\/d\/1djf0yScVIP3RlAnoke8-f40LnXAmXnyGiHPtJ3ZGfuM\/edit?gid=866071730#gid=866071730\" && export QUERY_STRING=\"\" && export OUTPUT_TYPE=csv && export OUTPUT_PATHS=\".\/src\/data\/tables\/services.csv\" && node .github\/scripts\/GSheetFetcher.js",
+    "get_table_services_csv": "mkdir -p src/data/tables && export CSV_URL=\"https:\/\/docs.google.com\/spreadsheets\/d\/1m2DkWaFH1KVYOPd8_q15t1QGnt9Rtyv_zqaVHsCQrRg\/edit?gid=1286354809#gid=1286354809\" && export QUERY_STRING=\"\" && export OUTPUT_TYPE=csv && export OUTPUT_PATHS=\".\/src\/data\/tables\/services.csv\" && node .github\/scripts\/GSheetFetcher.js",
     "dev": "astro dev --open --host --config astro.local.config.mjs",
     "dd": "export IGNORE_ERRORS=1 && pnpm downloadJSON && pnpm getDealerPrices && pnpm mergeCarPrices && pnpm replacePlaceholdersAndSearchDates && pnpm dev",
     "ddw": "powershell -Command \"pnpm downloadJSON_win; pnpm getDealerPrices; pnpm mergeCarPrices; pnpm replacePlaceholdersAndSearchDates; pnpm dev\"",

@@ -39,14 +39,10 @@ import SeoText from '@/components/Seo/Index.astro';
 import FaqItem from '@/components/Faq/Item.astro';
 import { type TFaqItem } from '@/components/Faq/types';
 import Table from '@/components/Table/Table.astro';
-import fs from 'node:fs';
 
 // Парсим JSON и готовим данные для заголовков аккордеона + таблиц
 // Получить файл с таблицей можно командой pnpm run get_table_services_json
-const jsonPath = new URL('../../data/tables/services.json', import.meta.url);
-
-// Читаем JSON файл с услугами
-const servicesJsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+import servicesJsonData from '@/data/tables/services.json';
 
 // Группируем услуги по типу
 const servicesGrouped: Record<string, any[]> = {};

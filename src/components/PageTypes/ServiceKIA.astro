@@ -87,7 +87,8 @@ if (fs.existsSync(jsonPath)) {
 			]);
 		
 		return { item, rows };
-	});
+	})
+	.filter(({ rows }) => rows.length > 0);  // Исключаем группы без услуг с ценами
 }
 
 ---

@@ -41,6 +41,7 @@ import { type TFaqItem } from '@/components/Faq/types';
 import Table from '@/components/Table/Table.astro';
 import fs from 'node:fs';
 import path from 'node:path';
+import CalcBar from '@/components/CalcBar/CalcBar.astro';
 
 // Парсим JSON и готовим данные для заголовков аккордеона + таблиц
 // Получить файл с таблицей можно командой pnpm run get_table_services_json
@@ -107,10 +108,11 @@ if (fs.existsSync(jsonPath)) {
       {faqBlocks.map(({ item, rows }) => (
         <FaqItem item={item}>
 					<div class="content">
-						<Table data={rows} head={['Наименование', 'Цена, руб.']} popupText="Заявка на услугу<br />" tableLoyoutFixed={true} />
+						<Table data={rows} calc={true} head={['Наименование', 'Цена, руб.']} tableLoyoutFixed={true} />
 					</div>
         </FaqItem>
       ))}
+			<CalcBar />
     </section>
   )}
   <LatestPosts collectionName="actions" title="Специальные предложения" id="specials" class="bg-gray-100" />

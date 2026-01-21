@@ -9,7 +9,6 @@ import { complectation } from './alpine/complectation.js';
 import { store } from './alpine/store.js';
 import { calcTable } from './alpine/calcTable.js';
 
-
 document.addEventListener('alpine:init', () => {
 	usedPreviewGallery();
 	headerComponent();

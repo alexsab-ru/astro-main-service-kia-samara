@@ -159,7 +159,6 @@ jobs:
         run: |
           npm install -g pnpm
           pnpm install --no-frozen-lockfile
-          pnpm get_table_services_json
 
       - name: Download JSONs
         if: steps.check_changes.outputs.changes == 'true'

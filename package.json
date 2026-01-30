@@ -79,7 +79,6 @@
     "test_USED_CARS_ADS_AD": "pnpm cars test used_cars_ads_ad --dev",
     "test_USED_CARS_carcopy_offers_offer": "pnpm cars test used_cars_carcopy_offers_offer --dev",
     "\n# Dev and Build commands:": "",
-    "get_table_services_json": "mkdir -p src/data/tables && export CSV_URL=\"https:\/\/docs.google.com\/spreadsheets\/d\/1djf0yScVIP3RlAnoke8-f40LnXAmXnyGiHPtJ3ZGfuM\/edit?gid=321165003#gid=321165003\" && export QUERY_STRING=\"\" && export KEY_MAPPING=\"{}\" && export OUTPUT_PATHS=\".\/src\/data\/tables\/services.json\" && node .github\/scripts\/GSheetFetcher.js",
     "predev": "node .github/scripts/setBrand.mjs",
     "dev": "astro dev --open --host --config astro.local.config.mjs",
     "dev:toyota": "ASTRO_ACTIVE_BRAND=toyota node .github/scripts/setBrand.mjs && astro dev --open --host --config astro.local.config.mjs",

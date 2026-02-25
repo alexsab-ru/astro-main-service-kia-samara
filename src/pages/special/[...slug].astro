@@ -1,0 +1,29 @@
+---
+/**
+ * Редирект /special/ * / → /special-offers/ * /
+ *
+ * Этот маршрут существует, чтобы перенаправить старые URL вида /special/<slug>/
+ * на актуальные /special-offers/<slug>/.
+ *
+ * Маршрут более конкретный, чем [collection]/[...slug].astro,
+ * поэтому Astro выбирает его первым для путей /special/*.
+ *
+ * getStaticPaths берёт список записей из коллекции special-offers,
+ * чтобы сгенерировать редирект-страницы для каждого существующего slug.
+ */
+import { type DataEntryMap, getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const entries = await getCollection('special-offers' as keyof DataEntryMap);
+	return entries
+		.filter(entry => typeof entry.id === 'string' && !entry.id.startsWith('__'))
+		.map(entry => ({
+			params: { slug: entry.id },
+		}));
+}
+
+const { slug } = Astro.params;
+
+// 301 — постоянный редирект (для SEO)
+return Astro.redirect(`/special-offers/${slug}/`, 301);
+---
